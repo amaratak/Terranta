@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terranta - Music Streaming</title>
-
-    <!-- Favicon for the website tab -->
+    <title>Terranta Music</title>
     <link rel="icon" href="https://i.ibb.co/bjx9tCGY/favbicon.jpg" type="image/jpeg">
 
-    <meta property="og:title" content="Terranta">
-    <meta property="og:description" content="Listen to music, upload your tracks, and discover new artists." />
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Terranta Music">
+    <meta property="og:description" content="A community music streaming platform.">
     <meta property="og:image" content="https://i.ibb.co/ZRSZwZpm/terrantaban.jpg">
     <meta property="og:url" content="https://amaratak.github.io/gdwb">
     <meta property="og:type" content="website">
 
+    <!-- Font and CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Uploadcare styles and scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
+    <script type="module">
+        import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
+        UC.defineComponents(UC);
+    </script>
 </head>
 
 <body>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2>Unleash Your Music</h2>
-            <p>Listen to your favorite tracks, discover new artists, and upload your own music.</p>
-            <a href="#featured" class="cta-btn">Explore Music</a>
+            <h2>Discover and Share Music</h2>
+            <p>Upload, Stream, and Explore Music from Around the World</p>
+            <a href="#upload" class="cta-btn">Upload Your Track</a>
         </div>
     </section>
 
     <!-- Featured Tracks Section -->
-    <section class="music" id="featured">
+    <section class="featured" id="featured">
         <h2>Featured Tracks</h2>
-        <div class="music-cards">
-            <div class="music-card">
-                <img src="https://example.com/track-art.jpg" alt="Track Title">
-                <h3>Track Title</h3>
+        <div class="track-list">
+            <div class="track-card">
+                <h3>Song Title 1</h3>
                 <p>Artist Name</p>
                 <audio controls>
-                    <source src="track-audio.mp3" type="audio/mp3">
+                    <source src="song-url-here.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
-
-            <div class="music-card">
-                <img src="https://example.com/track-art.jpg" alt="Track Title">
-                <h3>Track Title 2</h3>
+            <div class="track-card">
+                <h3>Song Title 2</h3>
                 <p>Artist Name</p>
                 <audio controls>
-                    <source src="track-audio2.mp3" type="audio/mp3">
+                    <source src="song-url-here.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -56,21 +59,64 @@
     </section>
 
     <!-- Upload Section -->
-    <section class="upload">
+    <section class="upload" id="upload">
         <h2>Upload Your Music</h2>
-        <form action="#" method="post">
-            <input type="file" name="music-file" accept="audio/*" required>
+        <uc-file-uploader-regular
+            ctx-name="my-uploader"
+            public-key="d780d22ea381ae126eaf"
+            class="uc-dark"
+        ></uc-file-uploader-regular>
+        
+        <!-- Song details form -->
+        <form action="#" method="post" id="upload-form">
             <input type="text" name="song-title" placeholder="Song Title" required>
             <input type="text" name="artist-name" placeholder="Artist Name" required>
             <button type="submit" class="upload-btn">Upload Track</button>
         </form>
     </section>
 
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2>About Terranta Music</h2>
+            <p>Terranta Music is a platform for artists to upload their music and share it with the world. Our mission is to provide high-quality audio software and an intuitive, easy-to-use platform for creators.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Terranta Studio | All rights reserved</p>
+        <p>&copy; 2025 Terranta Music | All rights reserved</p>
     </footer>
 
+    <!-- JavaScript for handling file upload and form submission -->
+    <script>
+        document.getElementById("upload-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const songTitle = document.querySelector('[name="song-title"]').value;
+            const artistName = document.querySelector('[name="artist-name"]').value;
+
+            // Get the file URL from Uploadcare
+            const uploader = document.querySelector('uc-file-uploader-regular');
+            const file = uploader._lastUploadedFile;
+
+            if (file) {
+                const fileUrl = file.cdnUrl;
+
+                // Simulate storing the track
+                console.log('Track Uploaded:', {
+                    title: songTitle,
+                    artist: artistName,
+                    fileUrl: fileUrl
+                });
+
+                // Here you would typically send the data to a server for storing.
+                alert('Your track has been uploaded!');
+            } else {
+                alert('Please upload a track file first!');
+            }
+        });
+    </script>
 </body>
 
 </html>
