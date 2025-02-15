@@ -3,120 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terranta Music</title>
+    <title>Terranta - SoundCloud Alternative</title>
+
+    <!-- Favicon for the website tab -->
     <link rel="icon" href="https://i.ibb.co/bjx9tCGY/favbicon.jpg" type="image/jpeg">
 
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Terranta Music">
-    <meta property="og:description" content="A community music streaming platform.">
-    <meta property="og:image" content="https://i.ibb.co/ZRSZwZpm/terrantaban.jpg">
-    <meta property="og:url" content="https://amaratak.github.io/gdwb">
-    <meta property="og:type" content="website">
-
-    <!-- Font and CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Uploadcare styles and scripts -->
+    <!-- Uploadcare file uploader -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.css">
     <script type="module">
         import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@1/web/uc-file-uploader-regular.min.js';
         UC.defineComponents(UC);
     </script>
+
+    <!-- Add smooth scroll -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <!-- Include your styles here (use the one you shared earlier) -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h2>Discover and Share Music</h2>
-            <p>Upload, Stream, and Explore Music from Around the World</p>
-            <a href="#upload" class="cta-btn">Upload Your Track</a>
-        </div>
-    </section>
-
-    <!-- Featured Tracks Section -->
-    <section class="featured" id="featured">
-        <h2>Featured Tracks</h2>
-        <div class="track-list">
-            <div class="track-card">
-                <h3>Song Title 1</h3>
-                <p>Artist Name</p>
-                <audio controls>
-                    <source src="song-url-here.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-            <div class="track-card">
-                <h3>Song Title 2</h3>
-                <p>Artist Name</p>
-                <audio controls>
-                    <source src="song-url-here.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+            <h2>Unleash Your Creativity</h2>
+            <p>Transform your music production with cutting-edge software.</p>
+            <a href="#upload-section" class="cta-btn">Upload Your Tracks</a>
         </div>
     </section>
 
     <!-- Upload Section -->
-    <section class="upload" id="upload">
-        <h2>Upload Your Music</h2>
+    <section class="upload-section" id="upload-section">
+        <h2>Upload Your Track</h2>
+        <p>Share your music with the world! Upload your audio files below:</p>
+        <!-- Uploadcare Widget Integration -->
+        <uc-config
+          ctx-name="my-uploader"
+          use-cloud-image-editor="false"
+          source-list="local"
+          pubkey="d780d22ea381ae126eaf">
+        </uc-config>
+
         <uc-file-uploader-regular
-            ctx-name="my-uploader"
-            public-key="d780d22ea381ae126eaf"
-            class="uc-dark"
-        ></uc-file-uploader-regular>
-        
-        <!-- Song details form -->
-        <form action="#" method="post" id="upload-form">
-            <input type="text" name="song-title" placeholder="Song Title" required>
-            <input type="text" name="artist-name" placeholder="Artist Name" required>
-            <button type="submit" class="upload-btn">Upload Track</button>
-        </form>
+          ctx-name="my-uploader"
+          class="uc-dark">
+        </uc-file-uploader-regular>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="about-text">
-            <h2>About Terranta Music</h2>
-            <p>Terranta Music is a platform for artists to upload their music and share it with the world. Our mission is to provide high-quality audio software and an intuitive, easy-to-use platform for creators.</p>
-        </div>
+        <h2>About Terranta Studio</h2>
+        <p>At Terranta, we specialize in providing the best music production tools for artists and creators. From intuitive digital audio workstations to world-class plugins, our goal is to help you create your best music.</p>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Terranta Music | All rights reserved</p>
+        <p>&copy; 2025 Terranta Studio | All rights reserved</p>
     </footer>
 
-    <!-- JavaScript for handling file upload and form submission -->
+    <!-- Optional: Add your script here -->
     <script>
-        document.getElementById("upload-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            const songTitle = document.querySelector('[name="song-title"]').value;
-            const artistName = document.querySelector('[name="artist-name"]').value;
-
-            // Get the file URL from Uploadcare
-            const uploader = document.querySelector('uc-file-uploader-regular');
-            const file = uploader._lastUploadedFile;
-
-            if (file) {
-                const fileUrl = file.cdnUrl;
-
-                // Simulate storing the track
-                console.log('Track Uploaded:', {
-                    title: songTitle,
-                    artist: artistName,
-                    fileUrl: fileUrl
-                });
-
-                // Here you would typically send the data to a server for storing.
-                alert('Your track has been uploaded!');
-            } else {
-                alert('Please upload a track file first!');
-            }
-        });
+        // Optional: Add JavaScript functionalities if needed
     </script>
 </body>
-
 </html>
