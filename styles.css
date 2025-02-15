@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    font-family: 'Press Start 2P', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://awesomewallpapersblog.com/wp-content/uploads/2014/01/4916-blurred-city-street-1920x1080-world-wallpaper.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    color: #fff;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 4em;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(128, 0, 128, 0.8); /* Purple glow */
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(128, 0, 128, 0.5); /* Purple glow */
+}
+
+.cta-btn {
+    background-color: #800080; /* Purple color */
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #fff;
+    color: #800080;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.7); /* Purple glow */
+}
+
+/* Featured Tracks Section */
+.music {
+    padding: 60px 20px;
+    background-color: #000;
+    text-align: center;
+}
+
+.music-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.music-card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    width: 300px;
+}
+
+.music-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.music-card h3 {
+    font-size: 1.8em;
+    margin-top: 15px;
+    color: #800080; /* Purple color */
+}
+
+.music-card p {
+    color: #ccc;
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.music-card audio {
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* Upload Section */
+.upload {
+    padding: 60px 20px;
+    background-color: #111;
+    text-align: center;
+}
+
+.upload form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.upload input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.upload-btn {
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #fff;
+    color: #800080;
+}
+
+/* Footer */
+.footer {
+    background-color: #1f1f1f;
+    text-align: center;
+    padding: 30px;
+}
+
+.footer p {
+    color: white;
+    font-size: 1em;
+}
